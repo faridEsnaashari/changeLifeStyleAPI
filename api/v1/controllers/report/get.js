@@ -16,7 +16,10 @@ const get = async(req, res) => {
     const text = createTemplate("report", { ...preparedData, date, id: data.id });
 
     try{
-        await axios.get(`https://api.telegram.org/bot${ global.env.TELEGRAM.BOT_TOKEN }/sendMessage?chat_id=${ global.env.TELEGRAM.CHAT_ID }&text=${ text }`)
+        await axios.post(`https://api.telegram.org/bot${ global.env.TELEGRAM.BOT_TOKEN }/sendMessage`, {
+            chat_id: global.env.TELEGRAM.CHAT_ID,
+            text 
+        });
         res.responser(SUCCESS_MSG, "message has been sent to the channel");
     }
     catch(err){
