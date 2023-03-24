@@ -3,7 +3,7 @@ const { VALIDATION_ERR } = require(`${ global.paths.tools.statusCodes }`);
 
 const getValidator = (req, res, next) => {
     const { 
-        name,
+        id,
         porn,
         sigrate,
         alcohol,
@@ -15,8 +15,8 @@ const getValidator = (req, res, next) => {
         shower,
     } = req.query;
 
-    if(IsUndefinedOrNull(name)){
-        return res.responser(VALIDATION_ERR, "undefined field", null, { field: "name" });
+    if(IsUndefinedOrNull(id)){
+        return res.responser(VALIDATION_ERR, "undefined field", null, { field: "id" });
     }
 
     if(IsUndefinedOrNull(shower)){

@@ -13,7 +13,7 @@ const get = async(req, res) => {
 
     Object.entries(data).forEach(([ key, value ]) => value === "true" ? preparedData[key] = true : preparedData[key] = false);
 
-    const text = createTemplate("report", { ...preparedData, date, name: data.name });
+    const text = createTemplate("report", { ...preparedData, date, id: data.id });
 
     try{
         await axios.get(`https://api.telegram.org/bot${ global.env.TELEGRAM.BOT_TOKEN }/sendMessage?chat_id=${ global.env.TELEGRAM.CHAT_ID }&text=${ text }`)
