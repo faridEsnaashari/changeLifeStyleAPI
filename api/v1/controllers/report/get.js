@@ -5,7 +5,7 @@ const createTemplate = require("../../../templates");
 const { INTERNAL_ERR, SUCCESS_MSG } = require(`${ global.paths.tools.statusCodes }`);
 
 const get = async(req, res) => {
-    const { id, messageId: message_id, messageTime, ...data  } = req.query;
+    const { id, messageId: message_id, messageTime, description, ...data  } = req.query;
 
     const persianDate = new Date().toLocaleDateString('fa-IR-u-nu-latn', { year: 'numeric', month: '2-digit', day: '2-digit' });
 
@@ -13,7 +13,8 @@ const get = async(req, res) => {
 
     Object.entries(data).forEach(([ key, value ]) => value === "true" ? preparedData[key] = true : preparedData[key] = false);
 
-    const text = createTemplate("report", { ...preparedData, date: persianDate, id });
+    const text = createTemplate("report", { ...preparedData, date: persianDate, id, description });
+    console.log(text);
 
     const date = new Date().toISOString().split("T")[0];
     const dawn = new Date(date);

@@ -11,6 +11,7 @@ const reportTemplate = data => {
         exsersize,
         sleep,
         shower,
+        description,
     } = data;
 
     return `🗓${ date }\r\n\n
@@ -25,6 +26,10 @@ const reportTemplate = data => {
 📍مطالعه ${ !reading ? "❌" : "✅" }\r\n
 📍۸ ساعت خواب${ !sleep ? "❌" : "✅" }\r\n
 📍دوش آب سرد${ !shower ? "❌" : "✅" }\r\n
+\r\n
+\r\n
+توضیحات:
+${ description }
 `;
 };
 
